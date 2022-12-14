@@ -332,7 +332,6 @@ jQuery(document).ready(function($) {
 	values.shift();
 	$('#pointsTableA').DataTable((
 	{
-		responsive: true,
 		columns: [
     { "title": "Team" },
     { "title": "M" },
@@ -365,7 +364,6 @@ jQuery(document).ready(function($) {
 	bvalues.shift();
 	$('#pointsTableB').DataTable((
 	{
-		responsive: true,
 		columns: [
     { "title": "Team" },
     { "title": "M" },
