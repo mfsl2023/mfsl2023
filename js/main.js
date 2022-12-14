@@ -253,7 +253,7 @@ jQuery(document).ready(function($) {
 
 	var siteCountDown = function() {
 
-		$('#date-countdown, #date-countdown2').countdown('2023/01/23 19:00:00', function(event) {
+		$('#date-countdown, #date-countdown2').countdown('2023/01/23', function(event) {
 		  var $this = $(this).html(event.strftime(''
 		    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
 		    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
@@ -320,5 +320,74 @@ jQuery(document).ready(function($) {
 	$(function () {
 		$("#bgndVideo").YTPlayer();
 	});
+	
+	// Datatable Points Pool A
+	
+	$.ajax({
+  url: "https://sheets.googleapis.com/v4/spreadsheets/1eXClbo4jgP10e89CDpT2_0mE7F4RA_6rp8HoPcQbOYM/values/Sheet1?key=AIzaSyAetEfYoYAWP3KjCRzvUtdbSaKMlhh9M1U"
+}).done(function( data ) {
+	
+	var values = data.values;
+	//remove headers
+	values.shift();
+	$('#pointsTableA').DataTable((
+	{
+		responsive: true,
+		columns: [
+    { "title": "Team" },
+    { "title": "M" },
+    { "title": "W" },
+    { "title": "D" },
+    { "title": "L" },
+	{ "title": "GF" },
+	{ "title": "GA" },
+	{ "title": "GD" },
+	{ "title": "Points" }
+  ],
+		data: values,
+		columnDefs: [
+   
+   { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
+],
+		order: [[8, 'desc']],
+	searching: false, paging: false, info: false}));
 
 });
+
+	// Datatable Points Pool B
+	
+	$.ajax({
+  url: "https://sheets.googleapis.com/v4/spreadsheets/14pea1Cu1X1ZvzBfhiavAauu0QdyMYgZCi0pj5DANvgA/values/Sheet1?key=AIzaSyAetEfYoYAWP3KjCRzvUtdbSaKMlhh9M1U"
+}).done(function( bdata ) {
+	
+	var bvalues = bdata.values;
+	//remove headers
+	bvalues.shift();
+	$('#pointsTableB').DataTable((
+	{
+		responsive: true,
+		columns: [
+    { "title": "Team" },
+    { "title": "M" },
+    { "title": "W" },
+    { "title": "D" },
+    { "title": "L" },
+	{ "title": "GF" },
+	{ "title": "GA" },
+	{ "title": "GD" },
+	{ "title": "Points" }
+  ],
+		data: bvalues,
+		columnDefs: [
+   
+   { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
+],
+		order: [[8, 'desc']],
+	searching: false, paging: false, info: false}));
+
+});
+
+
+});
+	
+	
