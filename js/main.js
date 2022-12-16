@@ -324,7 +324,7 @@ jQuery(document).ready(function($) {
 	// Datatable Points Pool A
 	
 	$.ajax({
-  url: "https://sheets.googleapis.com/v4/spreadsheets/1eXClbo4jgP10e89CDpT2_0mE7F4RA_6rp8HoPcQbOYM/values/Sheet1?key=AIzaSyAetEfYoYAWP3KjCRzvUtdbSaKMlhh9M1U"
+  url: "https://sheets.googleapis.com/v4/spreadsheets/1DDcn3l4UGEX-ishExtSqNZq5O_Z_UbS9AGflUjMn-ss/values/Sheet1?key=AIzaSyAetEfYoYAWP3KjCRzvUtdbSaKMlhh9M1U"
 }).done(function( data ) {
 	
 	var values = data.values;
@@ -334,22 +334,22 @@ jQuery(document).ready(function($) {
 	{
 		responsive : true,
 		columns: [
-    { "title": "T" },
-    { "title": "M" },
-    { "title": "W" },
-    { "title": "D" },
-    { "title": "L" },
-	{ "title": "GF" },
-	{ "title": "GA" },
-	{ "title": "GD" },
-	{ "title": "P" }
+    { "title": "T", responsivePriority : 1 },
+    { "title": "M", responsivePriority : 2 },
+    { "title": "W", responsivePriority : 4 },
+    { "title": "D", responsivePriority : 6 },
+    { "title": "L", responsivePriority : 5 },
+	{ "title": "GF", responsivePriority : 8 },
+	{ "title": "GA", responsivePriority : 9 },
+	{ "title": "GD", responsivePriority : 7 },
+	{ "title": "P", responsivePriority : 3 }
   ],
 		data: values,
 		columnDefs: [
    
    { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
 ],
-		order: [[8, 'desc']],
+		order: [[8, 'desc'],[7, 'desc']],
 	searching: false, paging: false, info: false}));
 
 });
@@ -367,22 +367,22 @@ jQuery(document).ready(function($) {
 	{
 		responsive : true,
 		columns: [
-    { "title": "T" },
-    { "title": "M" },
-    { "title": "W" },
-    { "title": "D" },
-    { "title": "L" },
-	{ "title": "GF" },
-	{ "title": "GA" },
-	{ "title": "GD" },
-	{ "title": "P" }
+    { "title": "T", responsivePriority : 1 },
+    { "title": "M", responsivePriority : 2 },
+    { "title": "W", responsivePriority : 4 },
+    { "title": "D", responsivePriority : 6 },
+    { "title": "L", responsivePriority : 5 },
+	{ "title": "GF", responsivePriority : 8 },
+	{ "title": "GA", responsivePriority : 9 },
+	{ "title": "GD", responsivePriority : 7 },
+	{ "title": "P", responsivePriority : 3 }
   ],
 		data: bvalues,
 		columnDefs: [
    
    { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
 ],
-		order: [[8, 'desc']],
+		order: [[8, 'desc'],[7, 'desc']],
 	searching: false, paging: false, info: false}));
 
 });
