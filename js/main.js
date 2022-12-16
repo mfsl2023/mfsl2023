@@ -332,8 +332,9 @@ jQuery(document).ready(function($) {
 	values.shift();
 	$('#pointsTableA').DataTable((
 	{
+		responsive : true,
 		columns: [
-    { "title": "Team" },
+    { "title": "T" },
     { "title": "M" },
     { "title": "W" },
     { "title": "D" },
@@ -341,7 +342,7 @@ jQuery(document).ready(function($) {
 	{ "title": "GF" },
 	{ "title": "GA" },
 	{ "title": "GD" },
-	{ "title": "Points" }
+	{ "title": "P" }
   ],
 		data: values,
 		columnDefs: [
@@ -364,8 +365,9 @@ jQuery(document).ready(function($) {
 	bvalues.shift();
 	$('#pointsTableB').DataTable((
 	{
+		responsive : true,
 		columns: [
-    { "title": "Team" },
+    { "title": "T" },
     { "title": "M" },
     { "title": "W" },
     { "title": "D" },
@@ -373,7 +375,7 @@ jQuery(document).ready(function($) {
 	{ "title": "GF" },
 	{ "title": "GA" },
 	{ "title": "GD" },
-	{ "title": "Points" }
+	{ "title": "P" }
   ],
 		data: bvalues,
 		columnDefs: [
