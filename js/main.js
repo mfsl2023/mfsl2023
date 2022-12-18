@@ -252,8 +252,11 @@ jQuery(document).ready(function($) {
 	siteStellar();
 
 	var siteCountDown = function() {
+		
+		var timeWithZone = moment.tz("2023-01-23 19:00", "Asia/Calcutta");
 
-		$('#date-countdown, #date-countdown2').countdown('2023/01/23', function(event) {
+
+		$('#date-countdown, #date-countdown2').countdown(timeWithZone.toDate(), function(event) {
 		  var $this = $(this).html(event.strftime(''
 		    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
 		    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
@@ -347,7 +350,7 @@ jQuery(document).ready(function($) {
 		data: values,
 		columnDefs: [
    
-   { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
+   { className: "text-white dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
 ],
 		order: [[8, 'desc'],[7, 'desc']],
 	searching: false, paging: false, info: false}));
@@ -380,7 +383,7 @@ jQuery(document).ready(function($) {
 		data: bvalues,
 		columnDefs: [
    
-   { className: "dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
+  { className: "text-white dt-center", targets: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }
 ],
 		order: [[8, 'desc'],[7, 'desc']],
 	searching: false, paging: false, info: false}));
@@ -390,4 +393,82 @@ jQuery(document).ready(function($) {
 
 });
 	
+	function getMatches() {
+	$('#matchDaySelect').prop('disabled', true);
+	$.ajax({
+  url: "https://sheets.googleapis.com/v4/spreadsheets/1ZV2L8of7yOL0-bR5lX3aSOy8IxB3yuCjxIgJCVW9yTs/values/Sheet1?key=AIzaSyAetEfYoYAWP3KjCRzvUtdbSaKMlhh9M1U"
+}).done(function( bdata ) {
+	var matchDetails = bdata.values;
+	
+	//remove headers
+	matchDetails.shift();
+	
+	// iterate matches
+	var dateSelectd = $('#matchDaySelect').val();
+	var rowDivs='';
+	var resultDivs='';
+	for (var key in matchDetails) {
+	if (matchDetails.hasOwnProperty(key)) {
+    var val = matchDetails[key];
+	
+	if (val[5] == dateSelectd && val[9] == 'y') {
+		 var resultDiv = '';
+		 		// resultDiv = "<div class='row mt-4'><div class='col-12 title-section'><h2 class='heading'>Result : Match "+val[0]+" - "+val[8]+"</h2></div></div>"+
+		resultDiv = "<div class='container'><div class='row mt-4'><div class='col-12 title-section'><h2 class='heading'>Result : Match "+val[0]+" - "+val[8]+"</h2></div></div>"+		
+	"<div class='row' style='margin-top:70px;'><div class='col-lg-12'><div class='d-flex team-vs'>"+
+	  "<span class='score'>"+val[10]+" - "+val[11]+"</span><div class='team-1 w-50'><div class='team-details w-100 text-left'>"+
+	  "<img src="+val[2]+" alt='Image' class='img-fluid'>"+
+     "<h3>"+val[1]+"</h3>"+
+     "<ul class='list-unstyled'> </ul> </div></div>"+
+      "<div class='team-2 w-50'> <div class='team-details w-100 text-right'>"+
+      "<img src="+val[4]+" alt='Image' class='img-fluid'>"+
+      "<h3>"+val[3]+"</h3>"+
+       "<ul class='list-unstyled'></ul> </div></div></div> </div></div></div>";
+	   resultDivs=resultDivs+resultDiv;
+	}
+	 
+	
+	//show current day only
+	if (val[5] == dateSelectd && val[9] == 'n') {
+	var rowDiv ='';
+	
+	
+	// rowDiv = "<div class='row mt-4'><div class='col-12 title-section'><h2 class='heading'>Match : "+val[0]+" - "+val[8]+"</h2></div>"+
+	// "<div class='col-lg-12 mb-2'><div class='bg-light p-4 rounded'><div class='widget-body'>"+
+    // "<div class='widget-body mb-3'><div class='widget-vs'><div class='d-flex align-items-center justify-content-around justify-content-between w-100'>"+
+    // "<div class='team-1 text-center'><img src="+val[2]+" alt='Image'>"+
+    // "<h3>"+val[1]+"</h3> </div> <div> <span class='vs'><span>VS</span></span>"+
+    // "</div> <div class='team-2 text-center'><img src="+val[4]+" alt='Image'>"+
+     // "<h3>"+val[3]+"</h3></div></div> </div> </div> <div class='text-center widget-vs-contents mb-4'>"+
+     // "<h4>"+val[7]+"</h4><p class='mb-5'>"+
+     // "<span class='d-block'>"+$('#matchDaySelect option:selected').text()+", " +val[6]+"</span>"+
+     // "<strong class='text-primary'>Meghalaya Football Arena</strong></p>"+
+	// "</div> </div></div></div>";
+	
+	
+	rowDiv = "<div class='row mt-5'><div class='col-lg-12'><div class='widget-next-match'>"+
+	"<div class='widget-title'><h3>Upcoming Match : "+val[0]+" - "+val[8]+"</h3></div>"+
+	"<div class='widget-body mb-3'><div class='widget-vs'>"+
+	"<div class='d-flex align-items-center justify-content-around justify-content-between w-100'>"+
+	"<div class='team-1 text-center'><img src="+val[2]+" alt='Image'>"+
+	"<h3>"+val[1]+"</h3></div><div><span class='vs'><span>VS</span></span></div>"+
+	"<div class='team-2 text-center'><img src="+val[4]+" alt='Image'>"+
+	"<h3>"+val[3]+"</h3></div></div></div></div>"+
+	"<div class='text-center widget-vs-contents mb-4'><h4>"+val[7]+"</h4>"+
+	"<p class='mb-5'><span class='d-block'>"+$('#matchDaySelect option:selected').text()+", " +val[6]+"</span>"+
+	"<strong class='text-primary'>Meghalaya Football Arena</strong></p></div></div></div></div>";
+	rowDivs=rowDivs+rowDiv;
+  }
+	}
+}
+	$('#matchesDiv').html(rowDivs);
+	$('#resultsDiv').html(resultDivs);
+	$('#matchDaySelect').prop('disabled', false);
+});
+
+	
+	
+	}
+	
+
 	
