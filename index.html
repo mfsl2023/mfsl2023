@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
 
   <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
@@ -38,16 +39,6 @@
 </head>
 
 <body>
-
-    <div id="sponsorDialog" class="site-section first-section" style="display: none;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 blog-content">
-            <p class="lead">Contact MFSL Committee President/Secretary for any sponsorship related enquiries. phone : 9847239378</p>
-            </div>
-        </div>
-      </div>
-    </div>
 
   <div class="site-wrap">
 
@@ -99,13 +90,19 @@
             <p>Welcome to the official website of Muppathadam Football Super League Season 3. Time left for the first whistle -</p>
             <div id="date-countdown"></div>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4 mr-3">Sponsor Event</a>
-              <a href="#" class="more light">Learn More</a>
+              <a href="https://wa.me/8078890025"  class="btn btn-primary py-3 px-4 mr-3">SPONSOR EVENT</a>
+              <a href="#" onclick="openBiLaw();" class="more light">By-Law</a>
             </p>  
           </div>
         </div>
       </div>
     </div>
+	
+	<div id="dialog" style="display: none;">
+    <div>
+        <iframe id="frame"></iframe>
+    </div>
+	</div>
 
     
     </br>
@@ -144,7 +141,7 @@
           <!-- </div> -->
         <!-- </div> -->
 		
-		          <div class="col-lg-6">
+		          <div class="col-lg-6 mb-2">
             <div class="widget-next-match">
               <div class="widget-title">
                 <h3>Pool A - First Match</h3>
@@ -172,7 +169,7 @@
                 <p class="mb-5">
                   <span class="d-block">January 23rd, 2023</span>
                   <span class="d-block">7:00 PM IST</span>
-                  <strong class="text-primary">Meghalaya Football Arena</strong>
+                  <strong class="text-primary">Meghalaya Football Ground</strong>
                 </p>
 
                 <!-- <div id="date-countdown2" class="pb-1"></div> -->
@@ -180,7 +177,7 @@
             </div>
           </div>
 		  
-		 <div class="col-lg-6">
+		 <div class="col-lg-6 mb-2">
             <div class="widget-next-match">
               <div class="widget-title">
                 <h3>Pool B - First Match</h3>
@@ -208,7 +205,7 @@
                 <p class="mb-5">
                   <span class="d-block">January 23rd, 2023</span>
                   <span class="d-block">7:30 PM IST</span>
-                  <strong class="text-primary">Meghalaya Football Arena</strong>
+                  <strong class="text-primary">Meghalaya Football Ground</strong>
                 </p>
 
                 <!-- <div id="date-countdown2" class="pb-1"></div> -->
@@ -599,6 +596,18 @@
 				 <li><a href="https://www.premierleague.com/">Premier League</a></li>
 				 <li><a href="https://www.uefa.com/">UEFA</a></li>
               
+              </ul>
+            </div>
+          </div>
+		  <div class="col-lg-3">
+            <div class="widget mb-3">
+              <h3>News</h3>
+              <ul class="list-unstyled links">
+                <li><a href="#">All</a></li>
+                <li><a href="#">Club News</a></li>
+                <li><a href="#">Media Center</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">RSS</a></li>
               </ul>
             </div>
           </div>

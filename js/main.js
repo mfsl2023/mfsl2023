@@ -210,7 +210,7 @@ jQuery(document).ready(function($) {
 		    margin: 0,
 		    autoplay: true,
 		    smartSpeed: 1000,
-		    items: 4,
+		    items: 14,
 		    nav: false,
 		    navText: ['<span class="icon-keyboard_backspace"></span>','<span class="icon-keyboard_backspace"></span>'],
 		    responsive:{
@@ -456,7 +456,7 @@ jQuery(document).ready(function($) {
 	"<h3>"+val[3]+"</h3></div></div></div></div>"+
 	"<div class='text-center widget-vs-contents mb-4'><h4>"+val[7]+"</h4>"+
 	"<p class='mb-5'><span class='d-block'>"+$('#matchDaySelect option:selected').text()+", " +val[6]+"</span>"+
-	"<strong class='text-primary'>Meghalaya Football Arena</strong></p></div></div></div></div>";
+	"<strong class='text-primary'>Meghalaya Football Ground</strong></p></div></div></div></div>";
 	rowDivs=rowDivs+rowDiv;
   }
 	}
@@ -468,6 +468,13 @@ jQuery(document).ready(function($) {
 
 	
 	
+	}
+	
+	function openBiLaw() {
+		window.open("pdf/MFSL_Niyamavali.pdf", "width=500,height=500,top=100,left=500")
+
+		// $("#dialog").dialog();
+         //   $("#frame").attr("src", "pdf/MFSL_Niyamavali.pdf");
 	}
 	
 
